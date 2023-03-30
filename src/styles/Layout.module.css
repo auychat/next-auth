@@ -27,6 +27,7 @@
   height: 100px;
   background-size: contain;
   z-index: 2;
+  transform: translateX(290%);
   animation: cloud_one 25.5s ease-in 5.9s infinite;
 }
 
