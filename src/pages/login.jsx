@@ -2,6 +2,7 @@ import Head from "next/head";
 import Layout from "@/components/layout/Layout";
 import Link from "next/link";
 import styles from "@/styles/Form.module.css";
+import Image from "next/image";
 
 export default function Login() {
   return (
@@ -46,20 +47,20 @@ export default function Login() {
 
           <div className={styles.input_group}>
             <button type="button" className={styles.button_custom}>
-              Sign In with Google
+              Sign In with Google <Image src={"/assets/google.svg"} width="20" height="20" alt="googleicon" />
             </button>
           </div>
 
           <div className={styles.input_group}>
             <button type="button" className={styles.button_custom}>
-              Sign In with Github
+              Sign In with Github <Image src={"/assets/github.svg"} width="25" height="25" alt="githubicon" />
             </button>
           </div>
         </form>
 
         {/* bottom */}
-        <p className="text-center text-gray-400">
-          don{`'`}t have an account yet?
+        <p className="text-center text-gray-400 py-4">
+          don{`'`}t have an account yet?{` `}
           <Link href={"/register"} className="text-blue-700">
             Sign Up
           </Link>
