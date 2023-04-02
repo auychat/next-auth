@@ -4,13 +4,15 @@ import Link from "next/link";
 import styles from "@/styles/Form.module.css";
 import Image from "next/image";
 
+import { HiAtSymbol, HiFingerPrint } from "react-icons/hi";
+
 export default function Login() {
   return (
     <Layout>
       <Head>
         <title>Login</title>
       </Head>
-      <section className="w-3/4 mx-auto" flex flex-col gap-10>
+      <section className="w-3/4 mx-auto flex flex-col gap-10">
         <div className="title">
           <h1 className="text-gray-800 text-4xl font-bold py-4">Explore</h1>
           <p className="w-3/4 mx-auto text-gray-400">
@@ -28,6 +30,9 @@ export default function Login() {
               placeholder="Email"
               className={styles.input_text}
             />
+            <span className="icon flex items-center py-4 pr-4">
+              <HiAtSymbol size={25} className="fill-slate-400" />
+            </span>
           </div>
           <div className={styles.input_group}>
             <input
@@ -36,6 +41,9 @@ export default function Login() {
               placeholder="Password"
               className={styles.input_text}
             />
+            <span className="icon flex items-center py-4 pr-4">
+              <HiFingerPrint size={25} className="fill-slate-400" />
+            </span>
           </div>
 
           {/* login buttons */}
@@ -47,13 +55,25 @@ export default function Login() {
 
           <div className={styles.input_group}>
             <button type="button" className={styles.button_custom}>
-              Sign In with Google <Image src={"/assets/google.svg"} width="20" height="20" alt="googleicon" />
+              Sign In with Google{" "}
+              <Image
+                src={"/assets/google.svg"}
+                width="20"
+                height="20"
+                alt="googleicon"
+              />
             </button>
           </div>
 
           <div className={styles.input_group}>
             <button type="button" className={styles.button_custom}>
-              Sign In with Github <Image src={"/assets/github.svg"} width="25" height="25" alt="githubicon" />
+              Sign In with Github{" "}
+              <Image
+                src={"/assets/github.svg"}
+                width="25"
+                height="25"
+                alt="githubicon"
+              />
             </button>
           </div>
         </form>
