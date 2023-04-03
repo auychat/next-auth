@@ -1,17 +1,21 @@
+import { useState } from "react";
 import Head from "next/head";
 import Layout from "@/components/layout/Layout";
 import Link from "next/link";
 import styles from "@/styles/Form.module.css";
 import Image from "next/image";
 
-import { HiAtSymbol, HiFingerPrint } from "react-icons/hi";
+import { HiAtSymbol, HiEye, HiEyeOff } from "react-icons/hi";
 
 export default function Login() {
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
     <Layout>
       <Head>
         <title>Login</title>
       </Head>
+
       <section className="w-3/4 mx-auto flex flex-col gap-10">
         <div className="title">
           <h1 className="text-gray-800 text-4xl font-bold py-4">Explore</h1>
@@ -31,18 +35,21 @@ export default function Login() {
               className={styles.input_text}
             />
             <span className="icon flex items-center py-4 pr-4">
-              <HiAtSymbol size={25} className="fill-slate-400" />
+              <HiAtSymbol size={25} />
             </span>
           </div>
           <div className={styles.input_group}>
             <input
-              type="password"
+              type={`${showPassword ? "text" : "password"}`}
               name="password"
               placeholder="Password"
               className={styles.input_text}
             />
-            <span className="icon flex items-center py-4 pr-4">
-              <HiFingerPrint size={25} className="fill-slate-400" />
+            <span
+              className="icon flex items-center py-4 pr-4"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <HiEye size={25} /> : <HiEyeOff size={25} />}
             </span>
           </div>
 
