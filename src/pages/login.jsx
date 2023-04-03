@@ -4,11 +4,17 @@ import Layout from "@/components/layout/Layout";
 import Link from "next/link";
 import styles from "@/styles/Form.module.css";
 import Image from "next/image";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 import { HiAtSymbol, HiEye, HiEyeOff } from "react-icons/hi";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
+
+  //Google Handler Function
+  async function handleGoogleSignin() {
+    signIn("google", { callbackUrl: "http://localhost:3000" });
+  }
 
   return (
     <Layout>
@@ -61,7 +67,11 @@ export default function Login() {
           </div>
 
           <div className={styles.input_group}>
-            <button type="button" className={styles.button_custom}>
+            <button
+              type="button"
+              className={styles.button_custom}
+              onClick={handleGoogleSignin}
+            >
               Sign In with Google{" "}
               <Image
                 src={"/assets/google.svg"}
