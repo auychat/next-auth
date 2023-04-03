@@ -34,7 +34,7 @@ export default function Login() {
               placeholder="Email"
               className={styles.input_text}
             />
-            <span className="icon flex items-center py-4 pr-4">
+            <span className="icon flex items-center py-4 px-4">
               <HiAtSymbol size={25} />
             </span>
           </div>
@@ -46,7 +46,7 @@ export default function Login() {
               className={styles.input_text}
             />
             <span
-              className="icon flex items-center py-4 pr-4"
+              className="icon flex items-center py-4 px-4"
               onClick={() => setShowPassword(!showPassword)}
             >
               {showPassword ? <HiEye size={25} /> : <HiEyeOff size={25} />}
@@ -86,7 +86,7 @@ export default function Login() {
         </form>
 
         {/* bottom */}
-        <p className="text-center text-gray-400 py-4">
+        <p className="text-center text-gray-400 py-4 ">
           don{`'`}t have an account yet?{` `}
           <Link href={"/register"} className="text-blue-700">
             Sign Up
