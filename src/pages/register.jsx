@@ -47,7 +47,13 @@ export default function Register() {
         {/* form */}
 
         <form className="flex flex-col gap-5" onSubmit={formik.handleSubmit}>
-          <div className={styles.input_group}>
+          <div
+            className={`${styles.input_group} ${
+              formik.errors.username && formik.touched.username
+                ? "border-rose-600"
+                : ""
+            }`}
+          >
             <input
               type="text"
               name="username"
@@ -67,7 +73,13 @@ export default function Register() {
             <></>
           )}
 
-          <div className={styles.input_group}>
+          <div
+            className={`${styles.input_group} ${
+              formik.errors.email && formik.touched.email
+                ? "border-rose-600"
+                : ""
+            }`}
+          >
             <input
               type="email"
               name="email"
@@ -85,7 +97,13 @@ export default function Register() {
             <></>
           )}
 
-          <div className={styles.input_group}>
+          <div
+            className={`${styles.input_group} ${
+              formik.errors.password && formik.touched.password
+                ? "border-rose-600"
+                : ""
+            }`}
+          >
             <input
               type={`${showPassword.password ? "text" : "password"}`}
               name="password"
@@ -117,7 +135,13 @@ export default function Register() {
             <></>
           )}
 
-          <div className={styles.input_group}>
+          <div
+            className={`${styles.input_group} ${
+              formik.errors.confirmPassword && formik.touched.confirmPassword
+                ? "border-rose-600"
+                : ""
+            }`}
+          >
             <input
               type={`${showPassword.confirmPassword ? "text" : "password"}`}
               name="confirmPassword"
