@@ -2,6 +2,7 @@ import { useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import Layout from "@/components/layout/Layout";
 import styles from "@/styles/Form.module.css";
@@ -13,6 +14,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import { useFormik } from "formik";
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter();
 
   //Formik hook
   const formik = useFormik({
@@ -25,7 +27,14 @@ export default function Login() {
   });
 
   async function onSubmit(values) {
-    console.log(values);
+    const status = await signIn("credentials", {
+      redirect: false,
+      email: values.email,
+      password: values.password,
+      callbackUrl: "/",
+    });
+
+    if(status.ok) router.push(status.url)
   }
 
   //Google Handler Function
@@ -78,11 +87,13 @@ export default function Login() {
           ) : (
             <></>
           )}
-          <div className={`${styles.input_group} ${
+          <div
+            className={`${styles.input_group} ${
               formik.errors.password && formik.touched.password
                 ? "border-rose-600"
                 : ""
-            }`}>
+            }`}
+          >
             <input
               type={`${showPassword ? "text" : "password"}`}
               name="password"
