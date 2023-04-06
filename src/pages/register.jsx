@@ -3,6 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Layout from "@/components/layout/Layout";
 import styles from "@/styles/Form.module.css";
+import { registerValidate } from "@/lib/validate";
 
 import { HiOutlineUser, HiAtSymbol, HiEye, HiEyeOff } from "react-icons/hi";
 import { useFormik } from "formik";
@@ -21,6 +22,7 @@ export default function Register() {
       password: "",
       confirmPassword: "",
     },
+    validate: registerValidate,
     onSubmit,
   });
 
@@ -57,6 +59,13 @@ export default function Register() {
               <HiOutlineUser size={25} />
             </span>
           </div>
+          {formik.errors.username && formik.touched.username ? (
+            <span className="text-rose-500 text-sm">
+              {formik.errors.username}
+            </span>
+          ) : (
+            <></>
+          )}
 
           <div className={styles.input_group}>
             <input
@@ -70,6 +79,12 @@ export default function Register() {
               <HiAtSymbol size={25} />
             </span>
           </div>
+          {formik.errors.email && formik.touched.email ? (
+            <span className="text-rose-500 text-sm">{formik.errors.email}</span>
+          ) : (
+            <></>
+          )}
+
           <div className={styles.input_group}>
             <input
               type={`${showPassword.password ? "text" : "password"}`}
@@ -94,6 +109,13 @@ export default function Register() {
               )}
             </span>
           </div>
+          {formik.errors.password && formik.touched.password ? (
+            <span className="text-rose-500 text-sm">
+              {formik.errors.password}
+            </span>
+          ) : (
+            <></>
+          )}
 
           <div className={styles.input_group}>
             <input
@@ -119,6 +141,13 @@ export default function Register() {
               )}
             </span>
           </div>
+          {formik.errors.confirmPassword && formik.touched.confirmPassword ? (
+            <span className="text-rose-500 text-sm">
+              {formik.errors.confirmPassword}
+            </span>
+          ) : (
+            <></>
+          )}
 
           {/* Register buttons */}
           <div className={styles.input_group}>
