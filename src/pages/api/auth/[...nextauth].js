@@ -47,4 +47,8 @@ export default NextAuth({
       },
     }),
   ],
+  secret: "btsFUa/bEYZ7gtBfp6aO6/VMXpHa3++K38SY3WskPhQ=",
+  session: {
+    strategy: "jwt",
+  },
 });

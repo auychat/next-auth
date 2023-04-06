@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import Layout from "@/components/layout/Layout";
 import styles from "@/styles/Form.module.css";
 import { registerValidate } from "@/lib/validate";
@@ -13,6 +14,8 @@ export default function Register() {
     password: false,
     confirmPassword: false,
   });
+
+  const router = useRouter();
 
   //Formik
   const formik = useFormik({
@@ -27,7 +30,17 @@ export default function Register() {
   });
 
   async function onSubmit(values) {
-    console.log(values);
+    const options = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(values),
+    };
+
+    await fetch("http://localhost:3000/api/auth/signup", options)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data) router.push("http://localhost:3000");
+      });
   }
 
   return (
